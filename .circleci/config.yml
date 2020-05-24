@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    docker:
+    - image: circleci/php:7.3-node-browsers
+    - image: circleci/node:14.0.0-browsers
+
+    environment:
+    - APP_ENV=local
+    - APP_KEY=base64:fXVG/tgUvgPX1ml2ZwJXO7d+57MJqeEmHZZqZeIL+tQ=
+    - APP_DEBUG=true
+    - APP_URL=http://localhost:8080
+
+    steps:
+    - checkout
+    - setup_remote_docker
+
+    - run: sudo apt update
+    - run: sudo docker-php-ext-install zip
+    - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    - run: php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+    - run: php composer-setup.php
+    - run: php -r "unlink('composer-setup.php');"
+    - run: npm install
+    - run:
+        name: php test
+        command: vendor/bin/phpunit
