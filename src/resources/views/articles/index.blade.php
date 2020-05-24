@@ -2,31 +2,28 @@
 
 @section('title', '記事一覧')
 
+
 @section('content')
     @include('nav')
-    @foreach($articles as $article)
+    @if(Session::has('flash_message'))  
+        <div class="alert alert-success">
+            {{ session('flash_message') }}
+        </div>
+    @endif
     <div class="container">
-        <div class="card mt-3">
-        <div class="card-body d-flex flex-row">
-            <i class="fas fa-user-circle fa-3x mr-1"></i>
-            <div>
-            <div class="font-weight-bold">
-            {{ $article->user->name }}
-            </div>
-            <div class="font-weight-lighter">
-            {{ $article->created_at->format('Y/m/d H:i') }}
-            </div>
-            </div>
+      <div class="row">
+        <div class="col-2 col-xs-12">
+          <div class="sidebar_fixed">
+            @include('articles.tags')
+          </div>
         </div>
-        <div class="card-body pt-0 pb-2">
-            <h3 class="h4 card-title">
-            {{ $article->title }}
-            </h3>
-            <div class="card-text">
-            {!! nl2br(e( $article->body )) !!}
-            </div>
+        <div class="col-8 col-xs-12">
+        <div class="font-weight-bold">記事一覧</div>
+          @foreach($articles as $article)
+              @include('articles.list')
+          @endforeach
         </div>
+      </div>
     </div>
-    @endforeach 
-  </div>
+
 @endsection
