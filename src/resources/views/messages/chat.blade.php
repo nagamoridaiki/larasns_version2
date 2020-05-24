@@ -98,7 +98,8 @@
                 @csrf
                 <li class="white">
                     <div class="form-group basic-textarea">
-                        <textarea class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3" placeholder="メッセージを入力"></textarea>
+                        <textarea required class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3" name="message_text" placeholder="メッセージを入力"></textarea>
+
                     </div>
                 </li>
                 <input type="hidden" name="send_user_id" value="{{$param['send']??''}}">
