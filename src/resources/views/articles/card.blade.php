@@ -2,7 +2,7 @@
   <div class="card-body d-flex flex-row">
     <a href="{{ route('users.show', ['name' => $article->user->name]) }}" class="text-dark">
         @if(!empty($article->user->image))
-            <img class='prof-photo' src="{{ asset('storage/images/'.$article->user->image) }}" >
+            <img class='prof-photo' src="{{ asset($article->user->image) }}" >
         @else
             <i class="fas fa-user-circle fa-3x mr-1"></i>
         @endif

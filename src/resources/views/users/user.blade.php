@@ -5,7 +5,7 @@
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
             @if(!empty($user->image))
-                    <img class='prof-photo' src="{{ asset('storage/images/'.$user->image) }}" >
+                    <img class='prof-photo' src="{{ asset($user->image) }}" >
             @else
                     <i class="fas fa-user-circle fa-3x mr-1"></i>
             @endif
@@ -22,7 +22,7 @@
       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
         @if(!empty($user->image))
-              <img class='prof-photo' src="{{ asset('storage/images/'.$user->image) }}" >
+              <img class='prof-photo' src="{{ asset($user->image) }}" >
         @else
               <i class="fas fa-user-circle fa-3x mr-1"></i>
         @endif
