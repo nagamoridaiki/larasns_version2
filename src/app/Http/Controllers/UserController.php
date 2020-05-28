@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Skill;
 use App\Background;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -111,16 +112,13 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
-        $request->file('image')->store('/public/images');
-        
-        //画像パス
-        $photo_path = $request->file('image')->hashName();
-        //usersデータベースのpathに、画像までのパス情報を格納
         $users = User::where('name', $name)->first();
-        $users->image = $photo_path;
-        $users->save();
 
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('', $image, 'public');
+        $users->image = Storage::disk('s3')->url($path);
+        $users->save();
+        
         return redirect('/')->with('flash_message', 'プロフィール画像を変更しました');
     }
 }

@@ -41,7 +41,7 @@
     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
       @if(!empty(Auth::user()->image))
-            <img class='prof-photo' src="{{ asset('storage/images/'.Auth::user()->image) }}" >
+            <img class='prof-photo' src="{{ asset(Auth::user()->image) }}" >
             
       @else
             <i class="fas fa-user-circle fa-3x mr-1"></i>

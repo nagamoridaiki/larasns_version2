@@ -10,7 +10,7 @@
     @foreach($article->comments as $comment)
       <p>
       @if(!empty($comment->user->image))
-              <img class='prof-photo' src="{{ asset('storage/images/'.$comment->user->image) }}" >
+              <img class='prof-photo' src="{{ asset($comment->user->image) }}" >
       @else
               <i class="fas fa-user-circle fa-3x mr-1"></i>
       @endif

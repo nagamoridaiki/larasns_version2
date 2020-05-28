@@ -6,7 +6,7 @@
       <a class="" id="navbarDropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
         @if(!empty($article->user->image))
-            <img class='prof-photo' src="{{ asset('storage/images/'.$article->user->image) }}" >
+            <img class='prof-photo' src="{{ asset($article->user->image) }}" >
         @else
             <i class="fas fa-user-circle fa-3x mr-1"></i>
         @endif
