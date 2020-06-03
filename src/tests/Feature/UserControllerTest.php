@@ -18,7 +18,7 @@ class UserControllerTest extends TestCase
      * @return void
      */
 
-    public function test_新しいユーザーを作成して返却する()
+    public function should_新しいユーザーを作成して返却する()
     {
         $data = [
             'name' => 'vuesplashuser',
@@ -36,7 +36,7 @@ class UserControllerTest extends TestCase
             ->assertStatus(201);
     }
 
-    public function test_ログイン機能()
+    public function should_ログイン機能()
     {
         $data = [
             'name' => 'vuesplashuser',
@@ -59,7 +59,7 @@ class UserControllerTest extends TestCase
 
     }
 
-    public function test_認証済みのユーザーをログアウトさせる()
+    public function should_認証済みのユーザーをログアウトさせる()
     {
 
         $data = [
