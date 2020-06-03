@@ -17,34 +17,75 @@ class UserControllerTest extends TestCase
      *
      * @return void
      */
-    
-    public function testBackground()
+
+    public function test_新しいユーザーを作成して返却する()
+    {
+        $data = [
+            'name' => 'vuesplashuser',
+            'email' => 'dummy@email.com',
+            'password' => 'test1234',
+            'password_confirmation' => 'test1234',
+        ];
+
+        $response = $this->json('POST', route('register'), $data);
+
+        $user = User::first();
+        $this->assertEquals($data['name'], $user->name);
+
+        $response
+            ->assertStatus(201);
+    }
+
+    public function test_ログイン機能()
+    {
+        $data = [
+            'name' => 'vuesplashuser',
+            'email' => 'dummy@email.com',
+            'password' => 'test1234',
+            'password_confirmation' => 'test1234',
+        ];
+        $this->json('POST', route('register'), $data);
+        $user = User::first();
+        
+        $response = $this->json('POST', route('login'), [
+            'email' => $user->email,
+            'password' => $user->password,
+        ]);
+
+        $response
+            ->assertStatus(302);
+
+        $this->assertAuthenticatedAs($user);
+
+    }
+
+    public function test_認証済みのユーザーをログアウトさせる()
+    {
+
+        $data = [
+            'name' => 'vuesplashuser',
+            'email' => 'dummy@email.com',
+            'password' => 'test1234',
+            'password_confirmation' => 'test1234',
+        ];
+        $this->json('POST', route('register'), $data);
+        $user = User::first();
+
+        $response = $this->actingAs($user)
+                         ->json('POST', route('logout'));
+
+        $response->assertStatus(204);
+        $this->assertGuest();
+    }
+
+    public function test_経歴・実績の画面遷移()
     {
         $user = factory(User::class)->create();
         $response = $this->actingAs($user)->get(route('background'));
         $response->assertStatus(200)
             ->assertViewIs('users.background');
     }
-
-    public function testMessage()
-    {
-        $data = [
-            'send_user_id'=>1,
-            'receive_user_id'=>2,
-            'message_text'=>'abcde',
-        ];
-
-        factory(Message::class)->create();
-        $ms = Message::find(1);
-        $ms->fill($data)->save();
-        $this->assertDatabaseHas('messages',$data);
-        
-    }
-
-
-
     
-
 
 
 }
