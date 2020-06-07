@@ -56,6 +56,11 @@
         {{ $user->name }}
     </h2>
   </div>
+  <div class="card-body">
+    <div style="width: 30%;" style="height: 30%;">
+          <pie-chart></pie-chart>
+    </div>
+  </div>
   @if(isset($user->self_introduction))
   <div class="card-body"><h3>自己紹介</h3></div>
   <div class="card-body">
@@ -102,4 +107,11 @@
     </div>
   </div>
 </div>
+
+<style>
+.barchart{
+  width: 30%;
+  height:30%;
+}
+</style>
 
