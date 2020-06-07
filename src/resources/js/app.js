@@ -9,7 +9,11 @@ import Vue from 'vue'
 import ArticleLike from './components/ArticleLike'
 import ArticleTagsInput from './components/ArticleTagsInput'
 import FollowButton from './components/FollowButton'
+import BarChart from './components/module/BarChart'
+import PieChart from './components/module/PieChart'
+import axios from 'axios'
 
+Vue.prototype.$http = axios; 
 
 window.Vue = require('vue');
 
@@ -39,5 +43,7 @@ const app = new Vue({
       ArticleLike,
       ArticleTagsInput,
       FollowButton,
+      BarChart,
+      PieChart,
     }
   })
