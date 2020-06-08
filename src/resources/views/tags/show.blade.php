@@ -9,7 +9,7 @@
       <div class="card-body">
         <h2 class="h4 card-title m-0">{{ $tag->hashtag }}</h2>
         <div class="barchart">
-          <bar-chart></bar-chart>
+          <bar-chart :tag='@json($tag->name)'></bar-chart>
         </div>
         <div class="card-text text-right">
         </div>
