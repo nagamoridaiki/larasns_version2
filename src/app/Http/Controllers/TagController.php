@@ -12,7 +12,7 @@ class TagController extends Controller
 {
     public function index(Request $request){
         //選んだタグでarticleを絞り込み、ユーザーIDを取り出す。
-        dd($request);
+        //dd($request);
         $tag = $request->input('tag');
         $article_user_id = Tag::where('name', $tag)
         ->first()
@@ -29,9 +29,9 @@ class TagController extends Controller
         //vueのBarChart.jsに渡す
         $tagPostRankingData = [
             //ユーザーごとの指定したタグの投稿の数を格納する
-            'tag_post_count' => $count,
+            'tag_post_count' => [7, 5, 3, 1],
             //投稿したユーザー名を格納する
-            'name' => $users,
+            'name' => ["yamadataro", "suzukiziro", "tanakasaburo", "satohanako"],
         ];
         return ['tagPostRankingData' => $tagPostRankingData];
     }
