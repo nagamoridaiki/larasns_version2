@@ -101,8 +101,6 @@ class ArticleController extends Controller
         }else{
         $comment_user_id = 0;
         }
-
-
         return view('articles.show', ['article' => $article , 'comment_user_id' => $comment_user_id ]);
     }
 
@@ -111,7 +109,6 @@ class ArticleController extends Controller
     {
         $article->likes()->detach($request->user()->id);
         $article->likes()->attach($request->user()->id);
-
         return [
             'id' => $article->id,
             'countLikes' => $article->count_likes,

@@ -24,7 +24,7 @@ class MessageRequest extends FormRequest
     public function rules()
     {
         return [
-            
+            'message_text' => 'required|max:50',
         ];
     }
 
