@@ -43,3 +43,6 @@ Route::delete('/background_destroy', 'ProfielController@destroy')->name('backgro
 Route::get('/background_edit', 'ProfielController@background_edit')->name('background_edit');
 Route::post('/background_update', 'ProfielController@update')->name('background_update');
 Route::post('/newbackground', 'ProfielController@create')->name('create');
+
+Route::resource('/events', 'EventController');
+
