@@ -12,7 +12,7 @@
           <div class="card-body pt-0">
             @include('error_card_list')
             <div class="card-text">
-              <form method="POST" action="{{ route('events.store') }}">
+              <form method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data">
                 @include('events.form')
                 <button type="submit" class="btn blue-gradient btn-block">イベントを作成する</button>
               </form>
