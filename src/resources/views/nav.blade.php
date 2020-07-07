@@ -32,6 +32,10 @@
     @endguest
     @auth
     <li class="nav-item">
+    <a class="nav-link navbar-brand" href="{{ route('events.create') }}"><i class="fas fa-pen mr-1"></i>イベントを作成</a> 
+    </li>
+    
+    <li class="nav-item">
     <a class="nav-link navbar-brand" href="{{ route('articles.create') }}"><i class="fas fa-pen mr-1"></i>記事を投稿</a> 
     </li>
     @endauth

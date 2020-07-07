@@ -44,6 +44,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Article');
     }
 
+    public function events(): HasMany
+    {
+        return $this->hasMany('App\Event');
+    }
+
     public function backgrounds(): HasMany
     {
         return $this->hasMany('App\Background');
