@@ -7,9 +7,8 @@
 @section('content')
   <div class="container">
     <div class="row">
-    イベントリストページ
     @foreach($events as $event)
-      {{ $event->detail }}
+      @include('events.component')
     @endforeach
     </div>
   </div>

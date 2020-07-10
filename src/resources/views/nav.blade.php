@@ -30,6 +30,7 @@
     <a class="nav-link" href="{{ route('login') }}">ログイン</a>
     </li>
     @endguest
+      <a class="navbar-brand" href="{{ route('events.index') }}"><i class="fas fa-chalkboard-teacher"></i> イベント一覧</a>
     @auth
     <li class="nav-item">
     <a class="nav-link navbar-brand" href="{{ route('events.create') }}"><i class="fas fa-pen mr-1"></i>イベントを作成</a> 
