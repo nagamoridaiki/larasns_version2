@@ -28,6 +28,7 @@ class EventRequest extends FormRequest
             'detail' => 'required|max:500',
             'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg',
+
         ];
     }
 

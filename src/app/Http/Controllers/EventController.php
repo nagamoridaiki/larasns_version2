@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Event;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -13,7 +14,6 @@ class EventController extends Controller
     {
         $events = Event::all()->sortByDesc('created_at')
         ->load(['user']);
-
         return view('events.list', compact('events'));
     }
 
@@ -35,6 +35,12 @@ class EventController extends Controller
             $event->price = $request->price;
             $event->save();
             return redirect()->route('events.index');
-        
     }
+
+    public function show(Event $event)
+    {
+        
+        return view('events.detail', ['event' => $event ]);
+    }
+
 }

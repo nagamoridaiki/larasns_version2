@@ -5,6 +5,7 @@
 </div>
 <div class="form-group">
     <label>イベントイメージ</label>
+    <span>推奨サイズ 800×300</span>
     <input type="file" name='image' class="form-control-file">
 </div>
 <div class="form-group">

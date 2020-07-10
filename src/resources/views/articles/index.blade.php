@@ -18,10 +18,11 @@
           </div>
         </div>
         <div class="col-8 col-xs-12">
-        <div class="font-weight-bold">記事一覧</div>
-          @foreach($articles as $article)
-              @include('articles.list')
-          @endforeach
+          <div class="font-weight-bold">記事一覧</div>
+            @foreach($articles as $article)
+                @include('articles.list')
+            @endforeach
+          </div>
         </div>
       </div>
     </div>
