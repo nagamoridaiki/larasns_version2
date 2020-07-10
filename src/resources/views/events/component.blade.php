@@ -7,7 +7,7 @@
           alt="Card image cap" width="800" height="300">
       </div>
       <div class="card-body">
-        <a class="nav-link navbar-brand" href="{{ route('events.create') }}">
+        <a class="nav-link navbar-brand" href="{{ route('events.show', ['event' => $event]) }}">
           <h4 class="card-title">{{$event->title}}</h4>
           <p class="card-text">{{$event->detail}}</p>
           <p class="mb-0 text-secondary">
