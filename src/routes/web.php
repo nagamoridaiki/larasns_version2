@@ -45,5 +45,8 @@ Route::post('/background_update', 'ProfielController@update')->name('background_
 Route::post('/newbackground', 'ProfielController@create')->name('create');
 
 Route::resource('/events', 'EventController')->middleware('auth');
-
+Route::prefix('events')->name('events.')->group(function () {
+    Route::put('/{event}/join', 'EventController@join')->name('join')->middleware('auth');
+    Route::delete('/{event}/join', 'EventController@unjoin')->name('unjoin')->middleware('auth');
+});
 

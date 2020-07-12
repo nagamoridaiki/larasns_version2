@@ -22,6 +22,21 @@
                             <div class="card-body">
                                 <h4 class="card-title">{{$event->title}}</h4>
                                 <p class="card-text">{{$event->detail}}</p>
+                                
+                                <p class="card-text">
+                                    <div class="card-body pt-0 pb-2 pl-3">
+                                        <div class="card-text">
+                                        <event-join
+                                            :initial-is-joined-by='@json($event->isJoinedBy(Auth::user()))'
+                                            :initial-count-join='@json($event->count_join)' 
+                                            :authorized='@json(Auth::check())'
+                                            endpoint="{{ route('events.join', ['event' => $event]) }}"
+                                        >
+                                        </event-join>
+                                        </div>
+                                    </div>
+                                </p>
+                                
                                 <p class="mb-0 text-secondary">
                                     <span>会場 &#064;{{$event->address}}</span>
                                 </p>

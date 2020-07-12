@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Event;
 use App\Tag;
+use App\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,8 +54,27 @@ class EventController extends Controller
 
     public function show(Event $event)
     {
-        
+
         return view('events.detail', ['event' => $event ]);
+    }
+
+    public function join(Request $request, Event $event)
+    {
+        $event->join()->detach($request->user()->id);
+        $event->join()->attach($request->user()->id);
+        return [
+            'id' => $event->id,
+            'countJoin' => $event->count_join,
+        ];
+    }
+
+    public function unjoin(Request $request, Event $event)
+    {
+        $event->join()->detach($request->user()->id);
+        return [
+            'id' => $event->id,
+            'countJoin' => $event->count_join,
+        ];
     }
 
 }
