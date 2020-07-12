@@ -28,4 +28,22 @@ class Event extends Model
         return $this->belongsToMany('App\Tag')->withTimestamps();
     }
 
+    public function join(): BelongsToMany
+    {
+        return $this->belongsToMany('App\User', 'join_user')->withTimestamps();
+    }
+
+    public function isJoinedBy(?User $user): bool
+    {
+        return $user
+            ? (bool)$this->join->where('id', $user->id)->count()
+            : false;
+    }
+
+    public function getCountJoinAttribute(): int
+    {
+        return $this->join->count();
+    }
+
+
 }

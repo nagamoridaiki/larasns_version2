@@ -11,6 +11,7 @@ import ArticleTagsInput from './components/ArticleTagsInput'
 import FollowButton from './components/FollowButton'
 import BarChart from './components/module/BarChart'
 import PieChart from './components/module/PieChart'
+import EventJoin from './components/EventJoin'
 import axios from 'axios'
 
 Vue.prototype.$http = axios; 
@@ -45,5 +46,6 @@ const app = new Vue({
       FollowButton,
       BarChart,
       PieChart,
+      EventJoin,
     }
   })

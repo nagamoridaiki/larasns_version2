@@ -9,6 +9,13 @@
     <input type="file" name='image' class="form-control-file">
 </div>
 <div class="form-group">
+  <article-tags-input
+    :initial-tags='@json($tagNames ?? [])'
+    :autocomplete-items='@json($allTagNames ?? [])'
+  >
+  </article-tags-input>
+</div>
+<div class="form-group">
   <label></label>
   <textarea name="detail" required class="form-control" rows="16" placeholder="イベント詳細">{{ old('detail') }}</textarea>
 </div>

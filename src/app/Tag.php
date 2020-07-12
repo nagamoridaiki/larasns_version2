@@ -20,4 +20,10 @@ class Tag extends Model
     {
         return $this->belongsToMany('App\Article')->withTimestamps();
     }
+
+    public function events(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Event')->withTimestamps();
+    }
+
 }
