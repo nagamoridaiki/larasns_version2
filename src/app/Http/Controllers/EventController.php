@@ -27,14 +27,24 @@ class EventController extends Controller
 
         return view('events.create', [
             'allTagNames' => $allTagNames,
-        ]);    
+        ]);
     }
 
     public function store(EventRequest $request, Event $event)
     {
+            $request->file('image')->store('/public/images');
+            //画像パス
+            $photo_path = $request->file('image')->hashName();
+            //usersデータベースのpathに、画像までのパス情報を格納
+            /*
+            $users = User::where('name', $name)->first();
+            $users->image = $photo_path;
+            $users->save();
+
             $image = $request->file('image');
             $path = Storage::disk('s3')->putFile('', $image, 'public');
-            $event->image = Storage::disk('s3')->url($path);
+            */
+            $event->image = $photo_path;
 
             $event->title = $request->title;
             $event->detail = $request->detail;
